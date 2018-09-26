@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6</title>
+</head>
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- http://www.oilgaslink.com/order/order.json -->
+    <script>
+        function * gen(){
+            yield 'number';
+            yield axios.post(`http://www.oilgaslink.com/future/first.json`)
+           
+            return 'axios'
+        }
+        let g1 = gen();
+        let number1 = g1.next().value;
+        console.log()
+        g1.next().value.then((res)=>{
+            console.log(res.data);
+        });
+    </script>
+</body>
+</html>

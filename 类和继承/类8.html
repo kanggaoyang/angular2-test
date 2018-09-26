@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6</title>
+</head>
+<body>
+    <script>
+        //  fn.call(this指向谁，argu1，argu2);
+        //  fn.apply(this指向谁，[argu1，argu2]);
+        //  fn.bind(this指向谁);
+       class Person{
+            constructor(){
+                this.name = 'kgy';
+                this.showName = this.showName.bind(this) // 矫正this
+            }
+            showName(){
+                console.log('this: '+this);     //this: Person
+                return `名字为${this.name}`
+            }
+       }
+       let p1 = new Person();
+       
+       let {showName} = p1; //结构  不出问题
+       console.log(showName());
+    </script>
+</body>
+</html>

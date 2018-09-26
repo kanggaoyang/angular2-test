@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6</title>
+</head>
+<body>
+    <script>
+        
+       class Person{
+          constructor(){
+
+          }
+          showName(){
+              return `showName`
+          }
+          static aaa(){ // 静态方法就是类身上的方法
+              return `这是个静态方法`
+          }
+       }
+       let p1 = new Person();
+       console.log(p1.showName());
+       console.log(Person.aaa());  // 静态方法类调用
+    </script>
+</body>
+</html>

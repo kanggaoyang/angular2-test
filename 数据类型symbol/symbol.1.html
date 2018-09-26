@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6</title>
+</head>
+<body>
+    <script>
+    let mySymbol = Symbol('expert')
+        let a = {
+            name: 'kgy',
+            age: 18,
+            [mySymbol]: 'Hello!'  // 私有的  不常用
+        };
+    for (let key in a) {
+        console.log(key);  // 打印不出来mySymbol
+    }
+    </script>    
+</body>
+</html>

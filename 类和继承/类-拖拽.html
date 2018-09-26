@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: rebeccapurple;
+            position: absolute;
+            top: 0;
+        }
+        .left{
+            left: 0px;
+        }
+        .right{
+            right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" class="box left">DIV1</div>
+    <div id="div2" class="box right">DIV2</div>
+    <script>
+        class Drag{
+            constructor(id){
+                this.oDiv = document.querySelector(id);
+                this.disX = 0;
+                this.dixY = 0;
+                console.log(this.oDiv);
+                this.init();
+            }
+            init(){
+                this.oDiv.onmousedown = function(ev){
+                    this.disX = ev.clientX - this.oDiv.offsetLeft;
+                    this.disY = ev.clientY - this.oDiv.offsetTop;
+                console.log(this.disX,this.disY); // 处于元素中 按下的坐标
+                    document.onmousemove = this.fnMove.bind(this);
+                    document.onmouseup = this.fnUp.bind(this);
+
+                    return false;
+                }.bind(this);
+            }
+            fnMove(ev){
+                this.oDiv.style.left = ev.clientX - this.disX + 'px';
+                this.oDiv.style.top = ev.clientY - this.disY + 'px';
+            }
+            fnUp(){
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+        // 子类
+        class LimitDrag extends Drag{
+            fnMove(ev){
+                super.fnMove(ev);
+                if (this.oDiv.offsetLeft <= 0){
+                    this.oDiv.style.left = 0;
+                }
+                if (this.oDiv.offsetTop <= 0){
+                    this.oDiv.style.top = 0;
+                }
+            }
+        }
+        new Drag('#div1');
+        new LimitDrag('#div2');
+    </script>
+</body>
+</html>

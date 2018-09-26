@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6</title>
+</head>
+<body>
+    <script>
+        // es5 继承
+       function Person(name){
+           this.name = name;
+       }
+       Person.prototype.showName = function(){
+           return `名字是：${this.name}`
+       }
+
+       // 子类
+       function Student(name,opera){
+            Person.call(this,name); // 继承属性
+            this.opera = opera;  // 自己的属性
+       }
+       Student.prototype = new Person(); // 继承方法
+       let student1 = new Student('kgy','逃学');
+       console.log(student1.showName());
+       console.log(student1.name,student1.opera)
+    </script>
+</body>
+</html>

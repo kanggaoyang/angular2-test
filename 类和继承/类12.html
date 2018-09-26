@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6</title>
+</head>
+<body>
+    <script>
+        // es6 继承
+       // 父类 
+       class Person{
+           constructor(name,age){
+                this.name = name;
+                this.age = age;
+           }
+           showName(){
+               return `这是个名字${this.name}`
+           }
+       }
+       // 子类
+       class Student extends Person{
+
+       }
+       // 调用
+       let stud1 = new Student('kgy',18);
+       console.log(stud1.showName())
+    </script>
+</body>
+</html>
